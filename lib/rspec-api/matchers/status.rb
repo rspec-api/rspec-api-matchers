@@ -2,27 +2,27 @@ require 'rack/utils'
 
 module RSpecApi
   module Matchers
-    class MatchStatus
-      def initialize(expected_status)
-        @expected_status = expected_status
+    class Status
+      def initialize(status)
+        @expected_status = status
       end
 
-      def matches?(actual_code)
-        @actual_code = actual_code
-        actual_code == expected_code
+      def matches?(response)
+        @status = response.status
+        @status == expected_code
       end
       alias == matches?
 
       def failure_message_for_should
-        "expected #{@actual_code} to #{description}"
+        "expected HTTP status code #{expected_code}, got #{@status}"
       end
 
       def failure_message_for_should_not
-        "expected #{@actual_code} not to #{description}"
+        "expected HTTP status code not to be #{expected_code}, but it was"
       end
 
       def description
-        "be #{@expected_status}"
+        "be HTTP status code #{expected_code}"
       end
 
     private
@@ -36,7 +36,7 @@ module RSpecApi
       # @example
       # status_to_code(:ok) # => 200
       # status_to_code(200) # => 200
-      # status_to_code(987) # => raise
+      # status_to_code(987) # => raise ArgumentError
       def status_to_numeric_code(status)
         code = status.is_a?(Symbol) ? Rack::Utils.status_code(status) : status
         validate_status_code! code
@@ -47,7 +47,7 @@ module RSpecApi
       #
       # @example
       # validate_status_code!(200) # => (no error)
-      # validate_status_code!(999) # => raise
+      # validate_status_code!(999) # => raise ArgumentError
       def validate_status_code!(code)
         valid_codes = Rack::Utils::SYMBOL_TO_STATUS_CODE.values
         message = "#{code} must be a valid HTTP status code: #{valid_codes}"

@@ -12,14 +12,14 @@ describe 'have_prev_page_link matcher' do
     it 'fails if the response headers does not include any Link header' do
       expect {
         expect(response).to have_prev_page_link
-      }.to fail_with %r{expected headers to include a link to the previous page, but got}
+      }.to fail_with %r{expected headers to include a 'Link' to the previous page, but got}
     end
 
     it 'fails if the response headers include a different Link header' do
       response.headers = {'Link' => '<https://example.com/3>; rel="next"'}
       expect {
         expect(response).to have_prev_page_link
-      }.to fail_with %r{expected headers to include a link to the previous page, but got}
+      }.to fail_with %r{expected headers to include a 'Link' to the previous page, but got}
     end
   end
 
@@ -33,7 +33,7 @@ describe 'have_prev_page_link matcher' do
       response.headers = {'Link' => '<https://example.com/1>; rel="prev"'}
       expect {
         expect(response).not_to have_prev_page_link
-      }.to fail_with %q{expected headers not to include a link to the previous page, but one was found}
+      }.to fail_with %r{expected headers not to include a 'Link' to the previous page, but got}
     end
   end
 end

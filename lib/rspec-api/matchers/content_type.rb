@@ -1,5 +1,3 @@
-require 'rack/utils'
-
 module RSpecApi
   module Matchers
     class ContentType
@@ -9,22 +7,23 @@ module RSpecApi
 
       def matches?(response)
         @headers = response.headers
-        if @headers.key? 'Content-Type'
-          @headers['Content-Type'] == @content_type
-        end
+        @headers['Content-Type'] == @content_type if @headers.key? 'Content-Type'
       end
-      alias == matches?
 
       def failure_message_for_should
         "expected headers to #{description}, but got #{@headers}"
       end
 
       def failure_message_for_should_not
-        "expected headers not to #{description}, but was found"
+        "expected headers not to #{description}, but got #{@headers}"
       end
 
       def description
-        "include 'Content-Type': '#{@content_type}'"
+        %Q{include 'Content-Type': '#{@content_type}'}
+      end
+
+      def description_for_run_if
+        %Q{include any specific 'Content-Type'}
       end
     end
   end

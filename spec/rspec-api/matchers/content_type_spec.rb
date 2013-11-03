@@ -19,7 +19,7 @@ describe 'include_content_type matcher' do
   end
 
   describe 'expect(response).not_to include_content_type(...)' do
-    it 'passes if the response headers do not include content type' do
+    it 'passes if the response headers do not include any content type' do
       response.status = 204
       expect(response).not_to include_content_type
     end
@@ -28,7 +28,7 @@ describe 'include_content_type matcher' do
       response.headers = {'Content-Type' => 'application/json; charset=utf-8'}
       expect {
         expect(response).not_to include_content_type(:json)
-      }.to fail_with %q{expected headers not to include 'Content-Type': 'application/json; charset=utf-8', but was found}
+      }.to fail_with %r{expected headers not to include 'Content-Type': 'application/json; charset=utf-8', but got}
     end
   end
 end

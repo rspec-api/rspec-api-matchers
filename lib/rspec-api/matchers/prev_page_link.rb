@@ -1,25 +1,26 @@
-require 'rack/utils'
-
 module RSpecApi
   module Matchers
     class PrevPageLink
       def matches?(response)
         @headers = response.headers
-        links = @headers['Link'] || '' # see http://git.io/CUz3-Q
+        links = @headers['Link'] || '' # not fetch, see http://git.io/CUz3-Q
         links =~ %r{<.+?>. rel\="prev"}
       end
-      alias == matches?
 
       def failure_message_for_should
         "expected headers to #{description}, but got #{@headers}"
       end
 
       def failure_message_for_should_not
-        "expected headers not to #{description}, but one was found"
+        "expected headers not to #{description}, but got #{@headers}"
       end
 
       def description
-        %Q{include a link to the previous page}
+        %Q{include a 'Link' to the previous page}
+      end
+
+      def description_for_run_if
+        %Q{include any specific pagination 'Link'}
       end
     end
   end

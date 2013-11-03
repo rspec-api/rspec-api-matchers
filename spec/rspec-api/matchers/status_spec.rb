@@ -37,9 +37,7 @@ describe 'have_status matcher' do
     end
 
     it 'provides a description' do
-      matcher = have_status(:ok)
-      matcher.matches?(response)
-      expect(matcher.description).to eq 'be HTTP status code 200'
+      expect(have_status(:ok).description).to eq %Q{be HTTP status code 200}
     end
   end
 

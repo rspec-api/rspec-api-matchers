@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rspec'
   spec.add_dependency 'rack' # for ::Utils
+  spec.add_dependency 'activesupport' # for Array.wrap
 
   # For development / Code coverage
   spec.add_development_dependency 'bundler', '~> 1.3'

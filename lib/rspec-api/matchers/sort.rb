@@ -15,7 +15,7 @@ module RSpecApi
         if @field.nil?
           true
         else
-          @desc = " by #{'descending ' if @reverse}#{@field}"
+          @desc = " by #{'descending ' if @reverse}#{@field}" # TODO: use arrows
           @body = response.body
           array = extract_array of: @field, from: @body # what if this fails?
           is_sorted? array, @reverse

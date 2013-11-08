@@ -6,15 +6,19 @@ module RSpecApi
       def initialize(value, options = {})
         @value = value
         @field = options[:by]
-        @comparing_with = options.fetch :comparing_with, Proc.new{|x,y| x == y}
+        @comparing_with = options[:comparing_with]
       end
 
       def matches?(response)
-        @desc = " by #{@field}#{@comparing_with}#{@value}"
+        @desc = " by #{@field}#{@comparing_with || '='}#{@value}"
         @body = response.body
         array = extract_json_from @body
         array.all? do |item| # TODO: Don't always use string
-          @comparing_with.call @value, item[@field.to_s].to_s
+          if @comparing_with
+            @comparing_with.call @value, item[@field.to_s].to_s
+          else
+            @value.to_s == item[@field.to_s].to_s
+          end
         end
       end
       alias == matches?

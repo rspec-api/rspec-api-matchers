@@ -18,6 +18,13 @@ Install
 Add `gem 'rspec-api-matchers'` to your `Gemfile` and run `bundle`.
 Or install yourself by running `gem install rspec-api-matchers`.
 
+Version changes respect [Semantic Versioning](http://semver.org).
+To ensure `bundle update` won't cause problems in your repository,
+always indicate the patch version until version 1.0.0 is released, e.g.:
+
+    gem 'rspec-api-matchers', '~> 0.5.0'
+
+
 Available matchers
 ------------------
 

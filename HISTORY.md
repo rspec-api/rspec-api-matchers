@@ -1,3 +1,14 @@
+v0.5.0  - 2013/11/07
+--------------------
+
+* Respect the version of rspec-api
+* Remove unnecessary run_if
+* Warn when filter or attributes hit an empty array
+* Better description for filter with compare Proc
+* Replace be_valid_json with be_a_collection
+* include_content_type(:any) always passes
+* Rename spec/matchers to spec/dsl
+
 v0.1.0  - 2013/11/03
 --------------------
 

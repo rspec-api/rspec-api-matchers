@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rspec-api-matchers (0.1.0)
+    rspec-api-matchers (0.5.0)
       activesupport
       rack
       rspec

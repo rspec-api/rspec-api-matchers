@@ -15,6 +15,7 @@ module RSpecApi
       def include_content_type(type = nil)
         content_type = case type
         when :json then 'application/json; charset=utf-8'
+        when :any then %r{}
         end
         RSpecApi::Matchers::ContentType.new(content_type)
       end

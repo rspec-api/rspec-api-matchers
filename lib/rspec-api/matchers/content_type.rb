@@ -7,7 +7,7 @@ module RSpecApi
 
       def matches?(response)
         @headers = response.headers
-        @headers['Content-Type'] == @content_type if @headers.key? 'Content-Type'
+        @content_type.match @headers['Content-Type'] if @headers.key? 'Content-Type'
       end
 
       def failure_message_for_should

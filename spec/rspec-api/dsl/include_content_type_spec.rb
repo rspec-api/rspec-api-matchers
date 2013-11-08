@@ -16,6 +16,17 @@ describe 'include_content_type matcher' do
       }.to fail_with %r{expected headers to include 'Content-Type': 'application/json; charset=utf-8', but got}
     end
 
+    it 'passes if the response headers include any content type, given :any' do
+      response.headers = {'Content-Type' => 'anything'}
+      expect(response).to include_content_type(:any)
+    end
+
+    it 'fails if the response headers do not include any content type' do
+      response.headers = {}
+      expect {
+        expect(response).to include_content_type(:any)
+      }.to fail_with %r{expected headers to include 'Content-Type': '.+?', but got}
+    end
   end
 
   describe 'expect(response).not_to include_content_type(...)' do

@@ -42,7 +42,7 @@ module RSpecApi
       def extract_json_from(something)
         array = JSON without_callbacks(something)
         if array.is_a?(Array) and array.empty?
-          raise RSpec::Core::Pending::PendingDeclaredInExample.new "You are testing if an array is sorted, but the array is empty. Try with more fixtures"
+          raise RSpec::Core::Pending::PendingDeclaredInExample.new "You are testing if an array is filtered, but the array is empty. Try with more fixtures"
         end
         array
       rescue JSON::ParserError, JSON::GeneratorError

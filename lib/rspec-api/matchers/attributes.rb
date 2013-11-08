@@ -20,7 +20,7 @@ module RSpecApi
         # can just check them when there are no query params)... of course
         # unless the query params is ?fields=id,name
         # if json.is_a?(Array) and json.empty?
-        #   raise RSpec::Core::Pending::PendingDeclaredInExample.new "You are testing if an array is sorted, but the array is empty. Try with more fixtures"
+        #   raise RSpec::Core::Pending::PendingDeclaredInExample.new "You are testing if an array has attributes, but the array is empty. Try with more fixtures"
         # end
         has_attributes? json, @attributes
       rescue JSON::ParserError, JSON::GeneratorError

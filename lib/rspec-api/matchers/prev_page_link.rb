@@ -18,10 +18,6 @@ module RSpecApi
       def description
         %Q{include a 'Link' to the previous page}
       end
-
-      def description_for_run_if
-        %Q{include any specific pagination 'Link'}
-      end
     end
   end
 end

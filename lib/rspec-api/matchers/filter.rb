@@ -46,7 +46,7 @@ module RSpecApi
         end
         array
       rescue JSON::ParserError, JSON::GeneratorError
-        nil
+        raise RSpec::Core::Pending::PendingDeclaredInExample.new "You are testing if an array is filtered, but the array is empty. Try with more fixtures"
       end
 
       def without_callbacks(something)

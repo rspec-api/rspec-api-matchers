@@ -6,7 +6,6 @@ require 'rspec-api/dsl/be_sorted'
 require 'rspec-api/dsl/be_a_collection'
 require 'rspec-api/dsl/be_filtered'
 require 'rspec-api/dsl/have_attributes'
-require 'rspec-api/dsl/run_if' # should be the last, for metaprogramming
 
 require 'rspec/matchers'
 

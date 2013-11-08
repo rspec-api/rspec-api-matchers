@@ -53,7 +53,7 @@ module RSpecApi
         end
         array.map{|item| item[options[:of].to_s]} # what if it's not an array of hashes?
       rescue JSON::ParserError, JSON::GeneratorError
-        nil
+        raise RSpec::Core::Pending::PendingDeclaredInExample.new "You are testing if an array is sorted, but the array is empty. Try with more fixtures"
       end
 
       def without_callbacks(something)

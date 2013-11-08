@@ -21,10 +21,6 @@ module RSpecApi
       def description
         %Q{include 'Content-Type': '#{@content_type}'}
       end
-
-      def description_for_run_if
-        %Q{include any specific 'Content-Type'}
-      end
     end
   end
 end

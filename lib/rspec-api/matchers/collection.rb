@@ -2,16 +2,12 @@ require 'json'
 
 module RSpecApi
   module Matchers
-    class Json
-      def initialize(type)
-        @type = type
-        @desc = " #{@type}" if @type
-      end
+    class Collection
 
       def matches?(response)
         @body = response.body
         json = parse_json_of @body
-        @type ? json.is_a?(@type) : true
+        json.is_a?(Array)
       end
       alias == matches?
 
@@ -20,11 +16,11 @@ module RSpecApi
       end
 
       def failure_message_for_should_not
-        "expected body not to #{description}, but it was"
+        "expected body not to #{description}, but got #{@body}"
       end
 
       def description
-        %Q(be a valid JSON#{@desc})
+        %Q(be a collection)
       end
 
     private

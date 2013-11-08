@@ -24,7 +24,7 @@ Available matchers
     expect(response).to have_status(:ok)
     expect(response).to include_content_type(:json)
     expect(response).to have_prev_page_link
-    expect(response).to be_valid_json(Array)
+    expect(response).to be_a_collection
     expect(response).to be_a_jsonp('alert')
     expect(response).to be_sorted(by: :id, verse: :desc)
     expect(response).to be_filtered(10, by: :id)

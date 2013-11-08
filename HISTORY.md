@@ -3,7 +3,7 @@ v0.1.0  - 2013/11/03
 
 * Added include_content_type matcher
 * Added have_prev_page_link matcher
-* Added be_valid_json matcher
+* Added be_a_collection matcher
 * Added be_a_jsonp matcher
 * Added be_sorted matcher
 * Added be_filtered matcher

@@ -1,3 +1,15 @@
+v0.6.0  - 2013/11/09
+--------------------
+
+* Use :value option to specify to value to filter by in be_filtered
+* Rename :comparing_with to :compare_with in be_filtered
+* Accept a symbol in :compare_with (e.g.: `compare_with: :<`)
+* `have_attributes` does not accept a block anymore
+* `has_page_links` replaces `has_prev_page_link`
+* `have_content_type` replaces `include_content_type`
+* `be_wrapped_in_callback` replaces `be_a_jsonp`
+* matchers are available by default in examples tagged as :rspec_api
+
 v0.5.0  - 2013/11/07
 --------------------
 
@@ -12,7 +24,7 @@ v0.5.0  - 2013/11/07
 v0.1.0  - 2013/11/03
 --------------------
 
-* Added include_content_type matcher
+* Added valid_responseontent_type matcher
 * Added have_prev_page_link matcher
 * Added be_a_collection matcher
 * Added be_a_jsonp matcher

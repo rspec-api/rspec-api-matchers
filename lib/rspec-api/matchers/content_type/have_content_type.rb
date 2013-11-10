@@ -16,6 +16,7 @@ module RSpecApi
         content_type = case type
           when :json then 'application/json; charset=utf-8'
           when :any then %r{}
+          else type
         end
         RSpecApi::Matchers::ContentType::Matcher.new content_type
       end

@@ -6,9 +6,14 @@ describe 'have_content_type matcher' do
   let(:response) { OpenStruct.new headers: {} }
 
   describe 'expect(response).to have_content_type(...)' do
-    it 'passes if the response headers include the given content type' do
+    it 'passes if the response headers include the given content type as a symbol' do
       response.headers = {'Content-Type' => 'application/json; charset=utf-8'}
       expect(response).to have_content_type(:json)
+    end
+
+    it 'passes if the response headers include the given content type as a string' do
+      response.headers = {'Content-Type' => 'application/json; charset=utf-8'}
+      expect(response).to have_content_type('application/json; charset=utf-8')
     end
 
     it 'fails if the response headers include a different content type' do

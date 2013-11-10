@@ -31,11 +31,11 @@ How to install
 To install on your system, run `gem install rspec-api-matchers`.
 To use inside a bundled Ruby project, add this line to the Gemfile:
 
-    gem 'rspec-api-matchers', '~> 0.5.0'
+    gem 'rspec-api-matchers', '~> 0.6.0'
 
 The rspec-api-matchers gem follows [Semantic Versioning](http://semver.org).
-Any new release that is fully backward-compatible bumps the *patch* version (0.5.1).
-Any new version that breaks compatibility bumps the *minor* version (0.6.0)
+Any new release that is fully backward-compatible bumps the *patch* version (0.0.x).
+Any new version that breaks compatibility bumps the *minor* version (0.x.0)
 
 Indicating the full version in your Gemfile (*major*.*minor*.*patch*) guarantees
 that your project won’t occur in any error when you `bundle update` and a new
@@ -46,4 +46,5 @@ How to contribute
 =================
 
 Don’t hesitate to send me code comments, issues or pull requests through GitHub!
+
 All feedback is appreciated. Thanks :)

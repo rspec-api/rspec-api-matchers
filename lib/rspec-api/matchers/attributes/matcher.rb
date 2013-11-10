@@ -91,7 +91,7 @@ module RSpecApi
 
         def to_hash(attrs)
           array = Array.wrap(attrs).map do |item|
-            item.is_a?(Hash) ? [item.keys.first, item.values.first] : [item, {}]
+            item.is_a?(Hash) ? item.to_a.flatten : [item, {}]
           end.flatten
           Hash[*array]
         end

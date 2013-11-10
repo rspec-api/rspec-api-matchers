@@ -45,6 +45,12 @@ describe 'have_attributes matcher' do
         expect(response).to have_attributes id: {}, name: {}
       end
 
+      it 'fails given a missing attribute in a hash' do
+        expect {
+          expect(response).to have_attributes id: {}, something_else: {}
+        }.to fail_with %r{expected body to have attributes .+?, but got}
+      end
+
       it 'passes given an existing attribute + value' do
         expect(response).to have_attributes name: {value: 'one'}
       end

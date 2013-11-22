@@ -27,7 +27,7 @@ module RSpecApi
       private
 
         def has_attributes?(items, attrs)
-          attrs.deep_symbolize_keys!
+          attrs.symbolize_keys!
           attrs.all?{|name, options| has_attribute? items, name, options}
         end
 

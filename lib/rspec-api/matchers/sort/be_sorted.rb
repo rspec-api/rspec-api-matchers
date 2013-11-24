@@ -3,15 +3,28 @@ require 'rspec-api/matchers/sort/matcher'
 module RSpecApi
   module Matchers
     module Sort
-      # Passes if the response body is a non-empty sorted JSON collection
+      # Passes if the object has a non-empty sorted JSON collection in the body.
       #
-      # @example
+      # @param [Hash] options how the body is expected to be sorted.
+      # @option options [Symbol or String] :by The JSON key to sort by
+      # @option options [Symbol or String] :verse (:asc) The sorting direction
       #
-      #   # Passes if the body is sorted by descending IDs
+      # Sorting is ascending unless +verse.to_s+ is 'desc' or 'descending'
+      #
+      # @example Passes if the body is sorted by descending IDs
+      #   require 'rspec-api-matchers'
+      #
       #   body = '[{"id": 3}, {"id": 2}, {"id": 1}]'
-      #   expect(OpenStruct.new body: body).to be_sorted(by: :id, verse: :desc)
+      #   obj = OpenStruct.new body: body
       #
-      # For more examples check +be_sorted_spec.rb+.
+      #   describe 'be_sorted' do
+      #     include RSpecApi::Matchers::Sort
+      #     it { expect(obj).to be_sorted(by: :id, verse: :desc) }
+      #   end
+      #
+      #   # => (rspec) 1 example, 0 failures
+      #
+      # @see http://git.io/UhC4MQ be_sorted_spec.rb for more examples
       def be_sorted(options = {})
         RSpecApi::Matchers::Sort::Matcher.new options
       end

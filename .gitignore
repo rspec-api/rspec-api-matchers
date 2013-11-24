@@ -19,3 +19,6 @@ coverage/
 **/tmp
 *.gem
 *.sqlite3
+
+doc/
+.yardoc/

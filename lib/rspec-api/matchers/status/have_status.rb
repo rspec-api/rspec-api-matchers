@@ -3,20 +3,25 @@ require 'rspec-api/matchers/status/matcher'
 module RSpecApi
   module Matchers
     module Status
-      # Passes if the response has a status that matches +status+.
+      # Passes if the object has a status that matches +status+.
       #
-      # @example
+      # @param [Symbol or Integer] status The expected status code
       #
-      #   # Passes if the response status matches :ok
-      #   status = :ok
-      #   expect(OpenStruct.new status: status).to have_status 200
+      # @example Passes if the response status matches :ok
+      #   require 'rspec-api-matchers'
       #
-      # @note
+      #   obj = OpenStruct.new status: 200
       #
-      #   The full list of symbolic HTTP status codes is available at:
-      #   http://git.io/YwpDnA#L542
+      #   describe 'have_status' do
+      #     include RSpecApi::Matchers::Status
+      #     it { expect(obj).to have_status :ok }
+      #   end
       #
-      # For more examples check +have_headers_spec.rb+.
+      #   # => (rspec) 1 example, 0 failures
+      #
+      # @see http://git.io/YwpDnA#L542 List of symbolic HTTP status codes
+      #
+      # @see http://git.io/Gvb-nQ have_headers_spec.rb for more examples
       def have_status(status)
         RSpecApi::Matchers::Status::Matcher.new status
       end

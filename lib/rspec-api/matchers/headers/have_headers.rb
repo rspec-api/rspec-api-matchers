@@ -3,15 +3,22 @@ require 'rspec-api/matchers/headers/matcher'
 module RSpecApi
   module Matchers
     module Headers
-      # Passes if the response has a non-empty headers Hash.
+      # Passes if the object has a non-empty Hash in the headers.
       #
-      # @example
+      # @example Passes if the headers include the content length
+      #   require 'rspec-api-matchers'
       #
-      #   # Passes if the headers include the content length
       #   headers = {'Content-Length' => 17372}
-      #   expect(OpenStruct.new headers: headers).to have_headers
+      #   obj = OpenStruct.new headers: headers
       #
-      # For more examples check +have_headers_spec.rb+.
+      #   describe 'have_headers' do
+      #     include RSpecApi::Matchers::Headers
+      #     it { expect(obj).to have_headers }
+      #   end
+      #
+      #   # => (rspec) 1 example, 0 failures
+      #
+      # @see http://git.io/-Wb61A have_headers_spec.rb for more examples
       def have_headers
         RSpecApi::Matchers::Headers::Matcher.new
       end

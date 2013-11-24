@@ -5,7 +5,9 @@ RSpecApi::Matchers lets you express outcomes on the response of web APIs.
 
     expect(response).to have_status(:not_found)
 
-More documentation and examples about RSpecApi are available at [http://rspec-api.github.io](http://rspec-api.github.io)
+The full documentation is available at [rubydoc.info](http://rubydoc.info/github/rspec-api/rspec-api-matchers/master/frames).
+
+More information about the parent project RSpecApi is available at [rspec-api.github.io](http://rspec-api.github.io)
 
 [![Build Status](https://travis-ci.org/rspec-api/rspec-api-matchers.png?branch=master)](https://travis-ci.org/rspec-api/rspec-api-matchers)
 [![Code Climate](https://codeclimate.com/github/rspec-api/rspec-api-matchers.png)](https://codeclimate.com/github/rspec-api/rspec-api-matchers)
@@ -21,9 +23,8 @@ Available matchers
     expect(response).to be_a_collection
     expect(response).to be_wrapped_in_callback('alert')
     expect(response).to be_sorted(by: :id, verse: :desc)
-    expect(response).to be_filtered(by: :id, value: 10)
+    expect(response).to be_filtered(by: :id, value: 10, compare_with: :>)
     expect(response).to have_attributes(id: {value: 1.2}, url: {type: {string: :url}})
-
 
 How to install
 ==============
@@ -40,7 +41,6 @@ Any new version that breaks compatibility bumps the *minor* version (0.x.0)
 Indicating the full version in your Gemfile (*major*.*minor*.*patch*) guarantees
 that your project won’t occur in any error when you `bundle update` and a new
 version of RSpecApi::Matchers is released.
-
 
 How to contribute
 =================

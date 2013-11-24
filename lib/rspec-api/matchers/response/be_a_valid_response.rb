@@ -3,15 +3,21 @@ require 'rspec-api/matchers/response/matcher'
 module RSpecApi
   module Matchers
     module Response
-      # Passes if response is present
+      # Passes if the object has either a status, headers or a body.
       #
-      # @example
+      # @example Passes if the response has a status
+      #   require 'rspec-api-matchers'
       #
-      #   # Passes if the response has a status
-      #   response = OpenStruct.new status: 100
-      #   expect(response).to be_a_valid_response
+      #   obj = OpenStruct.new status: 100
       #
-      # For more examples check +be_a_valid_response_spec.rb+.
+      #   describe 'be_a_valid_response' do
+      #     include RSpecApi::Matchers::Response
+      #     it { expect(obj).to be_a_valid_response }
+      #   end
+      #
+      #   # => (rspec) 1 example, 0 failures
+      #
+      # @see http://git.io/dc2QFg be_a_valid_response_spec.rb for more examples
       def be_a_valid_response
         RSpecApi::Matchers::Response::Matcher.new
       end

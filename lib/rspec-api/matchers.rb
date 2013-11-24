@@ -11,6 +11,22 @@ require 'rspec-api/matchers/sort/be_sorted'
 require 'rspec-api/matchers/status/have_status'
 
 module RSpecApi
+  # Provides RSpec Matchers for RESTful web APIs.
+  #
+  # To have these matchers available inside of an RSpec `describe` block,
+  # tag that block with the `:rspec_api` metadata, or explicitly include the
+  # RSpecApi::Matchers module inside the example group
+  #
+  # @example Tag a `describe` block as `:rspec_api`:
+  #   describe "Artists", rspec_api: true do
+  #      ... # here you can write `expect(response).to have_status :ok`, etc.
+  #   end
+  #
+  # @example Explicitly include the RSpecApi::Matchers module
+  #   describe "Artists" do
+  #      include RSpecApi::Matchers
+  #      ... # here you can write `expect(response).to have_status :ok`, etc.
+  #   end
   module Matchers
     include Attributes
     include Collection
@@ -25,20 +41,4 @@ module RSpecApi
   end
 end
 
-# RSpecApi::Matchers adds matchers to test RESTful APIs.
-#
-# To have these matchers available inside of an RSpec `describe` block, tag that
-# block with the `:rspec_api` metadata:
-#
-#  describe "Artists", rspec_api: true do
-#     ... # here you can write `expect(response).to have_status :ok`, etc.
-#  end
 RSpec.configuration.include RSpecApi::Matchers, rspec_api: true
-
-# You can also explicitly include the RSpec::Api module inside the example group:
-#
-#  describe "Artists" do
-#     include RSpecApi::Matchers
-#     ... # here you can write `expect(response).to have_status :ok`, etc.
-#  end
-#

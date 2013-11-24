@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rspec-api-matchers (0.6.1)
+    rspec-api-matchers (0.6.2)
       activesupport
       rack
       rspec
@@ -50,6 +50,7 @@ GEM
       atomic
     tins (0.13.0)
     tzinfo (0.3.38)
+    yard (0.8.7.2)
 
 PLATFORMS
   ruby
@@ -59,3 +60,4 @@ DEPENDENCIES
   coveralls
   rake
   rspec-api-matchers!
+  yard

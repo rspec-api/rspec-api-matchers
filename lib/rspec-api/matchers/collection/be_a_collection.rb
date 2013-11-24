@@ -3,15 +3,22 @@ require 'rspec-api/matchers/collection/matcher'
 module RSpecApi
   module Matchers
     module Collection
-      # Passes if the response body is a collection of JSON objects
+      # Passes if the object has a collection of JSON objects in the body.
       #
-      # @example
+      # @example Passes if the body is a JSON array
+      #   require 'rspec-api-matchers'
       #
-      #   # Passes if the body is a JSON array
-      #   body = '[{"id": 1}]'
-      #   expect(OpenStruct.new body: body).to be_a_collection
+      #   body = '[{"id": 1}, {"name": "foo"}, {"name": "bar"}]'
+      #   obj = OpenStruct.new body: body
       #
-      # For more examples check +be_a_collection_spec.rb+.
+      #   describe 'be_a_collection' do
+      #     include RSpecApi::Matchers::Collection
+      #     it { expect(obj).to be_a_collection }
+      #   end
+      #
+      #   # => (rspec) 1 example, 0 failures
+      #
+      # @see http://git.io/Bl5qJQ be_a_collection_spec.rb for more examples
       def be_a_collection
         RSpecApi::Matchers::Collection::Matcher.new
       end

@@ -3,19 +3,24 @@ require 'rspec-api/matchers/jsonp/matcher'
 module RSpecApi
   module Matchers
     module Jsonp
-      # Passes if response body is a valid JSON wrapped in a JSONP callback
+      # Passes if the object has a JSONP callback-wrapped body
       #
-      # @example
+      # @param [Symbol or String] callback Name of the wrapping JSONP callback
       #
-      #   # Passes if the body is wrapped in "alert"
+      # @example Passes if the body is wrapped in the function "alert"
+      #   require 'rspec-api-matchers'
+      #
       #   body = 'alert([{"id": 1}])'
-      #   expect(OpenStruct.new body: body).to be_wrapped_in_callback(:alert)
+      #   obj = OpenStruct.new body: body
       #
-      # @note
+      #   describe 'be_wrapped_in_callback' do
+      #     include RSpecApi::Matchers::Jsonp
+      #     it { expect(obj).to be_wrapped_in_callback(:alert) }
+      #   end
       #
-      # A JSONP should actually return application/javascript...
+      #   # => (rspec) 1 example, 0 failures
       #
-      # For more examples check +be_wrapped_in_callback_spec.rb+.
+      # @see http://git.io/XLeIOg be_wrapped_in_callback_spec.rb for more examples
       def be_wrapped_in_callback(callback = nil)
         RSpecApi::Matchers::Jsonp::Matcher.new callback
       end

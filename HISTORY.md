@@ -1,3 +1,12 @@
+v0.7.0  - 2013/11/24
+--------------------
+
+* Allow Proc as comparison operator for :be_filtered
+* Let :be_filtered pass on an array with 1 item
+* Add yardoc and better documentation
+* Add compatibility with ActiveSupport 3
+* Allow content_type as either symbol or string
+
 v0.6.0  - 2013/11/09
 --------------------
 

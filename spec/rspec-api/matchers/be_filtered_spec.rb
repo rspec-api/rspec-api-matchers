@@ -50,11 +50,11 @@ describe 'be_filtered matcher' do
       end
     end
 
-    it 'is pending given a JSON collection with less than 2 objects' do
-      response.body = '[{"id": 1}]'
+    it 'is pending given a JSON collection with less than 1 object' do
+      response.body = '[]'
       expect {
         expect(response).to be_filtered by: :id
-      }.to be_pending_with %r{Cannot test filtering on an array with 1 item}
+      }.to be_pending_with %r{Cannot test filtering on an array with 0 items}
     end
 
     it 'fails given a collection of objects without the filtering field' do

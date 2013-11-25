@@ -13,7 +13,7 @@ module RSpecApi
         end
 
         def matches?(response)
-          super && all_objects_have_field? && has_two_objects? && is_filtered?
+          super && all_objects_have_field? && has_one_object? && is_filtered?
         end
 
         def description
@@ -34,8 +34,8 @@ module RSpecApi
           end
         end
 
-        def has_two_objects?
-          if json.length < 2
+        def has_one_object?
+          if json.length < 1
             msg = "Cannot test filtering on an array with #{json.length} items"
             raise RSpec::Core::Pending::PendingDeclaredInExample.new msg
           else

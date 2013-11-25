@@ -33,8 +33,13 @@ describe 'be_filtered matcher' do
     context 'given a JSON collection with 2 items with id < 5' do
       before { response.body = '[{"id":2},{"id":3,"name":"two"}]' }
 
-      it 'passes given the right comparison method' do
+      it 'passes given the right comparison method (symbol)' do
         expect(response).to be_filtered by: :id, value: 5, compare_with: :<
+      end
+
+      it 'passes given the right comparison method (proc)' do
+        cmp = -> expected, actual {actual < expected}
+        expect(response).to be_filtered by: :id, value: 5, compare_with: cmp
       end
 
       it 'fails given the wrong comparison method' do

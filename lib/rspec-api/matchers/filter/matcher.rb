@@ -45,7 +45,13 @@ module RSpecApi
 
         def is_filtered?
           values = json.map{|item| item[field]}
-          values.all?{|v| v.send compare_with, value}
+          values.all? do |v|
+            if compare_with.is_a?(Proc)
+              compare_with.call value, v
+            elsif compare_with.is_a?(Symbol)
+              v.send compare_with, value
+            end
+          end
         end
 
         def reverse?

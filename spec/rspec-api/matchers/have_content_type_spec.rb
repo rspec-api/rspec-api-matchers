@@ -16,6 +16,16 @@ describe 'have_content_type matcher' do
       expect(response).to have_content_type('application/json; charset=utf-8')
     end
 
+    it 'passes if the response headers include the given content type as a symbol regardless of character set case' do
+      response.headers = {'Content-Type' => 'application/json; charset=Utf-8'}
+      expect(response).to have_content_type(:json)
+    end
+
+    it 'passes if the response headers include the given content type as a string regardless of character set case' do
+      response.headers = {'Content-Type' => 'application/json; charset=Utf-8'}
+      expect(response).to have_content_type('application/json; charset=utf-8')
+    end
+
     it 'fails if the response headers include a different content type' do
       response.headers = {'Content-Type' => 'application/xml; charset=utf-8'}
       expect {

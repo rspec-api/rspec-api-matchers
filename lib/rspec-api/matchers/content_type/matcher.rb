@@ -11,7 +11,7 @@ module RSpecApi
         end
 
         def matches?(response)
-          super && headers.key?('Content-Type') && content_type.match(headers['Content-Type'])
+          super && headers.key?('Content-Type') && content_type.match(headers['Content-Type'].downcase)
         end
 
         def description

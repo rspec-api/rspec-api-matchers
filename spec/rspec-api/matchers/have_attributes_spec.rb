@@ -7,7 +7,7 @@ describe 'have_attributes matcher' do
 
   describe 'expect(response).to have_attributes(...)' do
     context 'given a JSON collection with 2 items with attributes' do
-      before { response.body = '[{"id":1,"name":"one"},{"id":2,"name":"one"}]' }
+      before { response.body = '[{"id":1,"name":"one","price":23.12},{"id":2,"name":"one","price":12.99}]' }
 
       it 'passes given no attributes' do
         expect(response).to have_attributes
@@ -67,6 +67,10 @@ describe 'have_attributes matcher' do
 
       it 'passes given an existing attribute + value + type + format' do
         expect(response).to have_attributes id: {type: {number: :integer}}, name: {value: 'one', type: :string}
+      end
+
+      it 'passes given an existing attribute of float value' do
+        expect(response).to have_attributes id: {type: {number: :integer}}, name: {value: 'one', type: :string}, price: {type: {number: :float}}
       end
 
     end

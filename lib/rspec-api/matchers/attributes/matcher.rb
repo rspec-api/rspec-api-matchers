@@ -68,6 +68,7 @@ module RSpecApi
           case format
           when :url then value =~ URI::regexp
           when :integer then value.is_a? Integer
+          when :float then value.is_a? Float
           when :timestamp then DateTime.iso8601 value rescue false
           when :email then value =~ %r{(?<name>.+?)@(?<host>.+?)\.(?<domain>.+?)}
           when Hash, Array then value.any? ? has_attributes?(value, to_hash(format)) : true
